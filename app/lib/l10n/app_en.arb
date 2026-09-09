@@ -121,5 +121,60 @@
   "moduleNotRunning": "ZeroTier Magisk module is not running. Please check if you have installed the ZeroTier Magisk module.",
 
   "peerTunneled": "Relayed",
-  "peerDirect": "Direct"
+  "peerDirect": "Direct",
+
+  "peerBonded": "Bonded",
+  "peerLatencyUnknown": "Latency unknown",
+  "peerPathsChip": "{count} paths ({active} active)",
+  "@peerPathsChip": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "active": {
+        "type": "int"
+      }
+    }
+  },
+  "peerPathPreferred": "Preferred",
+  "peerPathExpired": "Expired",
+  "peerLocalPort": "Local port",
+  "peerTrustedPathId": "Trusted path ID",
+  "peerLastSend": "Last send",
+  "peerLastReceive": "Last receive",
+  "peerNoPaths": "No paths available",
+  "peerTimeNever": "never",
+  "peerTimeJustNow": "just now",
+  "peerTimeSecondsAgo": "{seconds}s ago",
+  "@peerTimeSecondsAgo": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "peerTimeMinutesAgo": "{minutes}m ago",
+  "@peerTimeMinutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "peerTimeHoursAgo": "{hours}h ago",
+  "@peerTimeHoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "peerTimeDaysAgo": "{days}d ago",
+  "@peerTimeDaysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  }
 } 

@@ -1,0 +1,1119 @@
+diff --git a/app/analysis_options.yaml b/app/analysis_options.yaml
+index 0d29021..5671d4c 100644
+--- a/app/analysis_options.yaml
++++ b/app/analysis_options.yaml
+@@ -7,6 +7,10 @@
+ 
+ # The following line activates a set of recommended lints for Flutter apps,
+ # packages, and plugins designed to encourage good coding practices.
++analyzer:
++  exclude:
++    - build/**
++    - android/**
+ include: package:flutter_lints/flutter.yaml
+ 
+ linter:
+diff --git a/app/android/build/reports/problems/problems-report.html b/app/android/build/reports/problems/problems-report.html
+index d98e180..3fb078f 100644
+--- a/app/android/build/reports/problems/problems-report.html
++++ b/app/android/build/reports/problems/problems-report.html
+@@ -650,7 +650,7 @@ code + .copy-button {
+ <script type="text/javascript">
+ function configurationCacheProblems() { return (
+ // begin-report-data
+-{"diagnostics":[{"locations":[{"path":"build file 'D:\\projects\\zerotier-magisk\\app\\android\\build.gradle'","line":4}],"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('url = <value>') instead."}]]},{"locations":[{"pluginId":"com.android.internal.application"}],"problem":[{"text":"Declaring client module dependencies has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 9.0."}],"contextualLabel":"Declaring client module dependencies has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#declaring_client_module_dependencies","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"declaring-client-module-dependencies","displayName":"Declaring client module dependencies has been deprecated."}],"solutions":[[{"text":"Please use component metadata rules instead."}]]},{"locations":[{"pluginId":"kotlin-android"}],"problem":[{"text":"The org.gradle.util.WrapUtil type has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 9.0."}],"contextualLabel":"The org.gradle.util.WrapUtil type has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_7.html#org_gradle_util_reports_deprecations","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"the-org-gradle-util-wraputil-type-has-been-deprecated","displayName":"The org.gradle.util.WrapUtil type has been deprecated."}]},{"locations":[{"pluginId":"kotlin-android"}],"problem":[{"text":"The org.gradle.api.plugins.Convention type has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 9.0."}],"contextualLabel":"The org.gradle.api.plugins.Convention type has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#deprecated_access_to_conventions","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"the-org-gradle-api-plugins-convention-type-has-been-deprecated","displayName":"The org.gradle.api.plugins.Convention type has been deprecated."}]},{"locations":[{"pluginId":"dev.flutter.flutter-gradle-plugin"}],"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('url = <value>') instead."}]]},{"locations":[{"pluginId":"dev.flutter.flutter-gradle-plugin"}],"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('shrinkResources = <value>') instead."}]]},{"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('namespace = <value>') instead."}]]},{"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('compileSdk = <value>') instead."}]]},{"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('ndkVersion = <value>') instead."}]]},{"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('signingConfig = <value>') instead."}]]},{"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('source = <value>') instead."}]]},{"locations":[{"pluginId":"com.android.internal.application"}],"problem":[{"text":"The org.gradle.api.plugins.Convention type has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 9.0."}],"contextualLabel":"The org.gradle.api.plugins.Convention type has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#deprecated_access_to_conventions","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"the-org-gradle-api-plugins-convention-type-has-been-deprecated","displayName":"The org.gradle.api.plugins.Convention type has been deprecated."}]},{"locations":[{"pluginId":"com.android.internal.application"}],"problem":[{"text":"The org.gradle.api.plugins.BasePluginConvention type has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 9.0."}],"contextualLabel":"The org.gradle.api.plugins.BasePluginConvention type has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#base_convention_deprecation","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"the-org-gradle-api-plugins-basepluginconvention-type-has-been-deprecated","displayName":"The org.gradle.api.plugins.BasePluginConvention type has been deprecated."}]},{"locations":[{"pluginId":"com.android.internal.application"}],"problem":[{"text":"The BasePluginExtension.archivesBaseName property has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 9.0."}],"contextualLabel":"The BasePluginExtension.archivesBaseName property has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/dsl/org.gradle.api.plugins.BasePluginExtension.html#org.gradle.api.plugins.BasePluginExtension:archivesName","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"the-basepluginextension-archivesbasename-property-has-been-deprecated","displayName":"The BasePluginExtension.archivesBaseName property has been deprecated."}],"solutions":[[{"text":"Please use the archivesName property instead."}]]},{"locations":[{"pluginId":"dev.flutter.flutter-gradle-plugin"}],"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('flutterRoot = <value>') instead."}]]},{"locations":[{"pluginId":"dev.flutter.flutter-gradle-plugin"}],"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('flutterExecutable = <value>') instead."}]]},{"locations":[{"pluginId":"dev.flutter.flutter-gradle-plugin"}],"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('buildMode = <value>') instead."}]]},{"locations":[{"pluginId":"dev.flutter.flutter-gradle-plugin"}],"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('minSdkVersion = <value>') instead."}]]},{"locations":[{"pluginId":"dev.flutter.flutter-gradle-plugin"}],"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('localEngine = <value>') instead."}]]},{"locations":[{"pluginId":"dev.flutter.flutter-gradle-plugin"}],"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('localEngineHost = <value>') instead."}]]},{"locations":[{"pluginId":"dev.flutter.flutter-gradle-plugin"}],"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('localEngineSrcPath = <value>') instead."}]]}],"problemsReport":{"totalProblemCount":21,"buildName":"android","requestedTasks":"assembleDebug","documentationLink":"https://docs.gradle.org/8.13/userguide/reporting_problems.html","documentationLinkCaption":"Problem report","summaries":[{"problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"count":21}]}}
++{"diagnostics":[{"locations":[{"path":"build file '/home/supermariosf/project/zerotier-magisk/app/android/build.gradle'","line":4}],"problem":[{"text":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"This is scheduled to be removed in Gradle 10.0."}],"contextualLabel":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_space_assignment_syntax","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"properties-should-be-assigned-using-the-propname-value-syntax-setting-a-property-via-the-gradle-generated-propname-value-or-propname-value-syntax-in-groovy-dsl","displayName":"Properties should be assigned using the 'propName = value' syntax. Setting a property via the Gradle-generated 'propName value' or 'propName(value)' syntax in Groovy DSL has been deprecated."}],"solutions":[[{"text":"Use assignment ('url = <value>') instead."}]]},{"locations":[{"pluginId":"com.android.internal.application"}],"problem":[{"text":"Declaring an 'is-' property with a Boolean type has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"Starting with Gradle 9.0, this property will be ignored by Gradle."}],"contextualLabel":"Declaring an 'is-' property with a Boolean type has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_boolean_properties","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"declaring-an-is-property-with-a-boolean-type","displayName":"Declaring an 'is-' property with a Boolean type has been deprecated."}],"solutions":[[{"text":"Add a method named 'getCrunchPngs' with the same behavior and mark the old one with @Deprecated, or change the type of 'com.android.build.gradle.internal.dsl.BuildType$AgpDecorated.isCrunchPngs' (and the setter) to 'boolean'."}],[{"text":"The combination of method name and return type is not consistent with Java Bean property rules and will become unsupported in future versions of Groovy."}]]},{"locations":[{"pluginId":"com.android.internal.application"}],"problem":[{"text":"Declaring an 'is-' property with a Boolean type has been deprecated."}],"severity":"WARNING","problemDetails":[{"text":"Starting with Gradle 9.0, this property will be ignored by Gradle."}],"contextualLabel":"Declaring an 'is-' property with a Boolean type has been deprecated.","documentationLink":"https://docs.gradle.org/8.13/userguide/upgrading_version_8.html#groovy_boolean_properties","problemId":[{"name":"deprecation","displayName":"Deprecation"},{"name":"declaring-an-is-property-with-a-boolean-type","displayName":"Declaring an 'is-' property with a Boolean type has been deprecated."}],"solutions":[[{"text":"Add a method named 'getUseProguard' with the same behavior and mark the old one with @Deprecated, or change the type of 'com.android.build.gradle.internal.dsl.BuildType.isUseProguard' (and the setter) to 'boolean'."}],[{"text":"The combination of method name and return type is not consistent with Java Bean property rules and will become unsupported in future versions of Groovy."}]]}],"problemsReport":{"totalProblemCount":3,"buildName":"android","requestedTasks":"assembleRelease","documentationLink":"https://docs.gradle.org/8.13/userguide/reporting_problems.html","documentationLinkCaption":"Problem report","summaries":[]}}
+ // end-report-data
+ );}
+ </script>
+diff --git a/app/android/gradle.properties b/app/android/gradle.properties
+index 73c3168..5cfd626 100644
+--- a/app/android/gradle.properties
++++ b/app/android/gradle.properties
+@@ -4,3 +4,7 @@ android.enableJetifier=true
+ android.defaults.buildfeatures.buildconfig=true
+ android.nonTransitiveRClass=false
+ android.nonFinalResIds=false
++# This builtInKotlin flag was added automatically by Flutter migrator
++android.builtInKotlin=false
++# This newDsl flag was added automatically by Flutter migrator
++android.newDsl=false
+diff --git a/app/android/gradle/wrapper/gradle-wrapper.properties b/app/android/gradle/wrapper/gradle-wrapper.properties
+index 37f853b..d4081da 100644
+--- a/app/android/gradle/wrapper/gradle-wrapper.properties
++++ b/app/android/gradle/wrapper/gradle-wrapper.properties
+@@ -1,6 +1,6 @@
+ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-8.14.3-bin.zip
+ networkTimeout=10000
+ validateDistributionUrl=true
+ zipStoreBase=GRADLE_USER_HOME
+diff --git a/app/android/settings.gradle b/app/android/settings.gradle
+index 1b7f201..a2f515b 100644
+--- a/app/android/settings.gradle
++++ b/app/android/settings.gradle
+@@ -19,8 +19,8 @@ pluginManagement {
+ 
+ plugins {
+     id "dev.flutter.flutter-plugin-loader" version "1.0.0"
+-    id "com.android.application" version '8.10.0-beta01' apply false
+-    id "org.jetbrains.kotlin.android" version "2.1.20" apply false
++    id "com.android.application" version '8.11.1' apply false
++    id "org.jetbrains.kotlin.android" version "2.2.20" apply false
+ }
+ 
+ include ":app"
+\ No newline at end of file
+diff --git a/app/lib/components/peers_page.dart b/app/lib/components/peers_page.dart
+index 3739b2a..071e7bd 100644
+--- a/app/lib/components/peers_page.dart
++++ b/app/lib/components/peers_page.dart
+@@ -3,25 +3,18 @@ import '../services/zerotier_service.dart';
+ import '../l10n/app_localizations.dart'; // Import localizations
+ import '../models/peer_info.dart'; // Import the model
+ 
+-// class PeersPage extends StatelessWidget { // Convert to StatefulWidget
+ class PeersPage extends StatefulWidget {
+   final ZerotierService zerotierService;
+-  // Remove callback parameter
+-  // final Future<void> Function()? onRefreshPeers;
+ 
+   const PeersPage({
+     super.key,
+     required this.zerotierService,
+-    // Remove callback parameter from constructor
+-    // this.onRefreshPeers,
+   });
+ 
+   @override
+-  // State<PeersPage> createState() => _PeersPageState(); // Add createState
+   State<PeersPage> createState() => _PeersPageState();
+ }
+ 
+-// Add State class
+ class _PeersPageState extends State<PeersPage> {
+   bool _isLoading = false;
+   // Use the PeerInfo model for the list
+@@ -45,15 +38,13 @@ class _PeersPageState extends State<PeersPage> {
+     });
+   }
+ 
+-  // Placeholder method to fetch peers
+   Future<void> _fetchPeers() async {
+     _setLoading(true);
+-    
++
+     try {
+-      // 调用服务方法并获取返回值
+       final peers = await widget.zerotierService.loadPeers();
+       if (mounted) {
+-        final l10n = AppLocalizations.of(context)!;
++        final l10n = AppLocalizations.of(context);
+         setState(() {
+           if (peers == null) {
+             // ZeroTier服务不可用
+@@ -70,13 +61,12 @@ class _PeersPageState extends State<PeersPage> {
+         // 存储原始错误信息，不使用 l10n
+         final rawError = e.toString();
+         setState(() {
+-          // 在 setState 内部构建错误显示文本
+           _error = rawError; // 存储原始错误，显示时再格式化
+           _peers = [];
+         });
+-        
++
+         // 在确认 mounted 后使用 l10n 和 context
+-        final l10n = AppLocalizations.of(context)!;
++        final l10n = AppLocalizations.of(context);
+         ScaffoldMessenger.of(context).showSnackBar(
+           SnackBar(
+             content: Text(l10n.loadPeersErrorText(rawError)),
+@@ -91,20 +81,146 @@ class _PeersPageState extends State<PeersPage> {
+     }
+   }
+ 
++  /// 把小标签做成一枚紧凑的 Chip
++  Widget _buildChip(IconData icon, String label, Color color) {
++    return Chip(
++      avatar: Icon(icon, size: 14, color: color),
++      label: Text(label, style: TextStyle(fontSize: 12, color: color)),
++      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
++      visualDensity: VisualDensity.compact,
++      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
++      backgroundColor: color.withOpacity(0.1),
++      side: BorderSide.none,
++    );
++  }
++
++  /// 路径状态小标记（首选 / 已过期）
++  Widget _buildPathTag(String label, Color color) {
++    return Container(
++      margin: const EdgeInsets.only(left: 6),
++      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
++      decoration: BoxDecoration(
++        color: color.withOpacity(0.12),
++        borderRadius: BorderRadius.circular(4),
++      ),
++      child: Text(label, style: TextStyle(fontSize: 10, color: color)),
++    );
++  }
++
++  /// 把毫秒时间戳格式化成“多久之前”
++  String _formatAge(int msTimestamp, AppLocalizations l10n) {
++    if (msTimestamp <= 0) return l10n.peerTimeNever;
++    final diff = DateTime.now().millisecondsSinceEpoch - msTimestamp;
++    if (diff < 5000) return l10n.peerTimeJustNow;
++
++    final seconds = diff ~/ 1000;
++    if (seconds < 60) return l10n.peerTimeSecondsAgo(seconds);
++
++    final minutes = seconds ~/ 60;
++    if (minutes < 60) return l10n.peerTimeMinutesAgo(minutes);
++
++    final hours = minutes ~/ 60;
++    if (hours < 24) return l10n.peerTimeHoursAgo(hours);
++
++    return l10n.peerTimeDaysAgo(hours ~/ 24);
++  }
++
++  /// 单条路径详情
++  Widget _buildPathTile(PeerPath path, AppLocalizations l10n) {
++    final theme = Theme.of(context);
++    final stateColor = path.active && !path.expired
++        ? Colors.green.shade600
++        : theme.disabledColor;
++
++    final detailStyle = TextStyle(
++      fontSize: 11,
++      color: theme.disabledColor,
++      fontFamily: 'monospace',
++    );
++
++    return Padding(
++      padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
++      child: Column(
++        crossAxisAlignment: CrossAxisAlignment.start,
++        children: [
++          Row(
++            children: [
++              Icon(
++                path.active && !path.expired ? Icons.link : Icons.link_off,
++                size: 16,
++                color: stateColor,
++              ),
++              const SizedBox(width: 6),
++              Expanded(
++                child: Text(
++                  path.address,
++                  style: const TextStyle(fontFamily: 'monospace', fontSize: 12),
++                  overflow: TextOverflow.ellipsis,
++                ),
++              ),
++              if (path.preferred)
++                _buildPathTag(l10n.peerPathPreferred, Colors.blue.shade600),
++              if (path.expired)
++                _buildPathTag(l10n.peerPathExpired, Colors.red.shade600),
++            ],
++          ),
++          const SizedBox(height: 2),
++          Padding(
++            padding: const EdgeInsets.only(left: 22),
++            child: Column(
++              crossAxisAlignment: CrossAxisAlignment.start,
++              children: [
++                Text(
++                  '${l10n.peerLocalPort}: ${path.localPort}'
++                  '${path.trustedPathId > 0 ? '    ${l10n.peerTrustedPathId}: ${path.trustedPathId}' : ''}',
++                  style: detailStyle,
++                ),
++                Text(
++                  '${l10n.peerLastReceive}: ${_formatAge(path.lastReceive, l10n)}'
++                  '    ${l10n.peerLastSend}: ${_formatAge(path.lastSend, l10n)}',
++                  style: detailStyle,
++                ),
++              ],
++            ),
++          ),
++        ],
++      ),
++    );
++  }
++
+   // Helper to build list item display
+   Widget _buildPeerTile(PeerInfo peer, AppLocalizations l10n) {
+-    IconData roleIcon = peer.isPlanet ? Icons.cloud_outlined : Icons.computer_outlined;
+-    Color roleColor = peer.isPlanet ? Colors.blueGrey : Theme.of(context).colorScheme.secondary;
++    final theme = Theme.of(context);
++
++    final IconData roleIcon = peer.isPlanet
++        ? Icons.cloud_outlined
++        : (peer.isMoon ? Icons.brightness_2_outlined : Icons.computer_outlined);
++    final Color roleColor =
++        peer.isPlanet ? Colors.blueGrey : theme.colorScheme.secondary;
+ 
+     // 设置tunneled状态显示
+     final tunnelIcon = peer.tunneled ? Icons.settings_ethernet : Icons.wifi;
+-    final tunnelColor = peer.tunneled ? Colors.orange.shade700 : Colors.green.shade600;
++    final tunnelColor =
++        peer.tunneled ? Colors.orange.shade700 : Colors.green.shade600;
+     final tunnelText = peer.tunneled ? l10n.peerTunneled : l10n.peerDirect;
+ 
++    // 首选路径（用于快速判断该 peer 是否还活着）
++    PeerPath? primaryPath;
++    for (final p in peer.paths) {
++      if (p.preferred && p.active && !p.expired) {
++        primaryPath = p;
++        break;
++      }
++    }
++    primaryPath ??= peer.paths.isNotEmpty ? peer.paths.first : null;
++
+     return Card(
+       elevation: 1.5,
+       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+-      child: ListTile(
++      child: ExpansionTile(
++        tilePadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
++        childrenPadding: EdgeInsets.zero,
++        expandedCrossAxisAlignment: CrossAxisAlignment.start,
+         leading: CircleAvatar(
+           backgroundColor: roleColor.withOpacity(0.1),
+           child: Icon(roleIcon, size: 20, color: roleColor),
+@@ -113,7 +229,7 @@ class _PeersPageState extends State<PeersPage> {
+           children: [
+             Expanded(
+               child: Text(
+-                peer.address, 
++                peer.address,
+                 style: const TextStyle(fontFamily: 'monospace', fontSize: 14),
+                 overflow: TextOverflow.ellipsis,
+               ),
+@@ -124,64 +240,73 @@ class _PeersPageState extends State<PeersPage> {
+               Text(
+                 peer.version!,
+                 style: TextStyle(
+-                  fontSize: 12, 
++                  fontSize: 12,
+                   color: Colors.grey.shade700,
+-                  fontWeight: FontWeight.normal
++                  fontWeight: FontWeight.normal,
+                 ),
+               ),
+             ],
+           ],
+         ),
+-        subtitle: Column(
+-          crossAxisAlignment: CrossAxisAlignment.start,
+-          children: [
+-            const SizedBox(height: 4),
+-            Row(
+-              children: [
+-                 Chip(
+-                   avatar: Icon(roleIcon, size: 14, color: roleColor),
+-                   label: Text(peer.role, style: TextStyle(fontSize: 12, color: roleColor)),
+-                   padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
+-                   visualDensity: VisualDensity.compact,
+-                   backgroundColor: roleColor.withOpacity(0.1),
+-                   side: BorderSide.none,
+-                 ),
+-                 const SizedBox(width: 8),
+-                 // 添加tunneled状态显示
+-                 Chip(
+-                   avatar: Icon(tunnelIcon, size: 14, color: tunnelColor),
+-                   label: Text(tunnelText, style: TextStyle(fontSize: 12, color: tunnelColor)),
+-                   padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
+-                   visualDensity: VisualDensity.compact,
+-                   backgroundColor: tunnelColor.withOpacity(0.1),
+-                   side: BorderSide.none,
+-                 ),
+-                 const SizedBox(width: 8),
+-                 if (peer.latency != null) ...[
+-                   Icon(Icons.timer_outlined, size: 14, color: Colors.orange.shade700),
+-                   const SizedBox(width: 4),
+-                    Text('${peer.latency} ms', style: TextStyle(fontSize: 12, color: Colors.orange.shade700)),
+-                 ],
+-              ],
+-            ),
+-             if (peer.preferredPath != null) ...[
++        subtitle: Padding(
++          padding: const EdgeInsets.only(top: 4),
++          child: Column(
++            crossAxisAlignment: CrossAxisAlignment.start,
++            children: [
++              Wrap(
++                spacing: 6,
++                runSpacing: 2,
++                crossAxisAlignment: WrapCrossAlignment.center,
++                children: [
++                  _buildChip(roleIcon, peer.role, roleColor),
++                  _buildChip(tunnelIcon, tunnelText, tunnelColor),
++                  if (peer.isBonded)
++                    _buildChip(
++                        Icons.hub_outlined, l10n.peerBonded, Colors.purple.shade400),
++                  if (peer.latency != null)
++                    _buildChip(Icons.timer_outlined, '${peer.latency} ms',
++                        Colors.orange.shade700)
++                  else
++                    _buildChip(Icons.timer_off_outlined,
++                        l10n.peerLatencyUnknown, theme.disabledColor),
++                  _buildChip(Icons.alt_route,
++                      l10n.peerPathsChip(peer.pathCount, peer.activePathCount),
++                      theme.colorScheme.tertiary),
++                ],
++              ),
++              if (primaryPath != null) ...[
+                 const SizedBox(height: 4),
+                 Text(
+-                  peer.preferredPath!,
+-                  style: TextStyle(fontSize: 11, color: Theme.of(context).disabledColor, fontFamily: 'monospace'),
++                  '${primaryPath.address}    ${l10n.peerLastReceive}: ${_formatAge(primaryPath.lastReceive, l10n)}',
++                  style: TextStyle(
++                    fontSize: 11,
++                    color: theme.disabledColor,
++                    fontFamily: 'monospace',
++                  ),
+                   overflow: TextOverflow.ellipsis,
+                 ),
+-             ]
+-          ],
++              ],
++            ],
++          ),
+         ),
+-        dense: true,
++        children: peer.paths.isEmpty
++            ? [
++                Padding(
++                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
++                  child: Text(
++                    l10n.peerNoPaths,
++                    style: TextStyle(fontSize: 12, color: theme.disabledColor),
++                  ),
++                ),
++              ]
++            : peer.paths.map((p) => _buildPathTile(p, l10n)).toList(),
+       ),
+     );
+   }
+ 
+   @override
+   Widget build(BuildContext context) {
+-    final l10n = AppLocalizations.of(context)!;
++    final l10n = AppLocalizations.of(context);
+ 
+     Widget bodyContent;
+ 
+@@ -201,50 +326,51 @@ class _PeersPageState extends State<PeersPage> {
+               ),
+               const SizedBox(height: 16),
+               ElevatedButton.icon(
+-                 icon: const Icon(Icons.refresh),
+-                 label: Text(l10n.refreshButtonLabel),
+-                 onPressed: _isLoading ? null : _fetchPeers,
++                icon: const Icon(Icons.refresh),
++                label: Text(l10n.refreshButtonLabel),
++                onPressed: _isLoading ? null : _fetchPeers,
+               )
+             ],
+           ),
+-        )
++        ),
+       );
+     } else if (!_isLoading && _peers.isEmpty) {
+-       // Show "No peers found" centered, allowing pull-to-refresh
+-       bodyContent = LayoutBuilder(
+-          builder: (context, constraints) => SingleChildScrollView(
+-            physics: const AlwaysScrollableScrollPhysics(),
+-            child: Container(
+-              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+-              alignment: Alignment.center,
+-              child: Padding(
+-                padding: const EdgeInsets.all(16.0),
+-                child: Text(
+-                  l10n.noPeersFound, // Uses existing l10n key
+-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+-                    color: Theme.of(context).disabledColor
+-                  ),
+-                  textAlign: TextAlign.center,
+-                ),
++      // Show "No peers found" centered, allowing pull-to-refresh
++      bodyContent = LayoutBuilder(
++        builder: (context, constraints) => SingleChildScrollView(
++          physics: const AlwaysScrollableScrollPhysics(),
++          child: Container(
++            constraints: BoxConstraints(minHeight: constraints.maxHeight),
++            alignment: Alignment.center,
++            child: Padding(
++              padding: const EdgeInsets.all(16.0),
++              child: Text(
++                l10n.noPeersFound,
++                style: Theme.of(context)
++                    .textTheme
++                    .bodyMedium
++                    ?.copyWith(color: Theme.of(context).disabledColor),
++                textAlign: TextAlign.center,
+               ),
+             ),
+           ),
+-        );
++        ),
++      );
+     } else {
+       // Display the list using ListView.builder
+       bodyContent = ListView.builder(
+         physics: const AlwaysScrollableScrollPhysics(), // Ensure scrollable even when few items
+         itemCount: _peers.length,
+         itemBuilder: (context, index) {
+-           return _buildPeerTile(_peers[index], l10n);
++          return _buildPeerTile(_peers[index], l10n);
+         },
+       );
+     }
+ 
+     // Wrap the main content with RefreshIndicator
+     return RefreshIndicator(
+-       onRefresh: _fetchPeers,
+-       child: bodyContent,
++      onRefresh: _fetchPeers,
++      child: bodyContent,
+     );
+   }
+-} 
+\ No newline at end of file
++}
+diff --git a/app/lib/l10n/app_en.arb b/app/lib/l10n/app_en.arb
+index 16ddc50..f1ff16a 100644
+--- a/app/lib/l10n/app_en.arb
++++ b/app/lib/l10n/app_en.arb
+@@ -121,5 +121,60 @@
+   "moduleNotRunning": "ZeroTier Magisk module is not running. Please check if you have installed the ZeroTier Magisk module.",
+ 
+   "peerTunneled": "Relayed",
+-  "peerDirect": "Direct"
++  "peerDirect": "Direct",
++
++  "peerBonded": "Bonded",
++  "peerLatencyUnknown": "Latency unknown",
++  "peerPathsChip": "{count} paths ({active} active)",
++  "@peerPathsChip": {
++    "placeholders": {
++      "count": {
++        "type": "int"
++      },
++      "active": {
++        "type": "int"
++      }
++    }
++  },
++  "peerPathPreferred": "Preferred",
++  "peerPathExpired": "Expired",
++  "peerLocalPort": "Local port",
++  "peerTrustedPathId": "Trusted path ID",
++  "peerLastSend": "Last send",
++  "peerLastReceive": "Last receive",
++  "peerNoPaths": "No paths available",
++  "peerTimeNever": "never",
++  "peerTimeJustNow": "just now",
++  "peerTimeSecondsAgo": "{seconds}s ago",
++  "@peerTimeSecondsAgo": {
++    "placeholders": {
++      "seconds": {
++        "type": "int"
++      }
++    }
++  },
++  "peerTimeMinutesAgo": "{minutes}m ago",
++  "@peerTimeMinutesAgo": {
++    "placeholders": {
++      "minutes": {
++        "type": "int"
++      }
++    }
++  },
++  "peerTimeHoursAgo": "{hours}h ago",
++  "@peerTimeHoursAgo": {
++    "placeholders": {
++      "hours": {
++        "type": "int"
++      }
++    }
++  },
++  "peerTimeDaysAgo": "{days}d ago",
++  "@peerTimeDaysAgo": {
++    "placeholders": {
++      "days": {
++        "type": "int"
++      }
++    }
++  }
+ } 
+\ No newline at end of file
+diff --git a/app/lib/l10n/app_localizations.dart b/app/lib/l10n/app_localizations.dart
+index 2aae36d..ef70ea3 100644
+--- a/app/lib/l10n/app_localizations.dart
++++ b/app/lib/l10n/app_localizations.dart
+@@ -62,7 +62,8 @@ import 'app_localizations_zh.dart';
+ /// be consistent with the languages listed in the AppLocalizations.supportedLocales
+ /// property.
+ abstract class AppLocalizations {
+-  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
++  AppLocalizations(String locale)
++      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+ 
+   final String localeName;
+ 
+@@ -70,7 +71,8 @@ abstract class AppLocalizations {
+     return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
+   }
+ 
+-  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
++  static const LocalizationsDelegate<AppLocalizations> delegate =
++      _AppLocalizationsDelegate();
+ 
+   /// A list of this localizations delegate along with the default localizations
+   /// delegates.
+@@ -82,7 +84,8 @@ abstract class AppLocalizations {
+   /// Additional delegates can be added by appending to this list in
+   /// MaterialApp. This list does not have to be used at all if a custom list
+   /// of delegates is preferred or required.
+-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
++  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
++      <LocalizationsDelegate<dynamic>>[
+     delegate,
+     GlobalMaterialLocalizations.delegate,
+     GlobalCupertinoLocalizations.delegate,
+@@ -394,9 +397,106 @@ abstract class AppLocalizations {
+   /// In en, this message translates to:
+   /// **'Direct'**
+   String get peerDirect;
++
++  /// No description provided for @peerBonded.
++  ///
++  /// In en, this message translates to:
++  /// **'Bonded'**
++  String get peerBonded;
++
++  /// No description provided for @peerLatencyUnknown.
++  ///
++  /// In en, this message translates to:
++  /// **'Latency unknown'**
++  String get peerLatencyUnknown;
++
++  /// No description provided for @peerPathsChip.
++  ///
++  /// In en, this message translates to:
++  /// **'{count} paths ({active} active)'**
++  String peerPathsChip(int count, int active);
++
++  /// No description provided for @peerPathPreferred.
++  ///
++  /// In en, this message translates to:
++  /// **'Preferred'**
++  String get peerPathPreferred;
++
++  /// No description provided for @peerPathExpired.
++  ///
++  /// In en, this message translates to:
++  /// **'Expired'**
++  String get peerPathExpired;
++
++  /// No description provided for @peerLocalPort.
++  ///
++  /// In en, this message translates to:
++  /// **'Local port'**
++  String get peerLocalPort;
++
++  /// No description provided for @peerTrustedPathId.
++  ///
++  /// In en, this message translates to:
++  /// **'Trusted path ID'**
++  String get peerTrustedPathId;
++
++  /// No description provided for @peerLastSend.
++  ///
++  /// In en, this message translates to:
++  /// **'Last send'**
++  String get peerLastSend;
++
++  /// No description provided for @peerLastReceive.
++  ///
++  /// In en, this message translates to:
++  /// **'Last receive'**
++  String get peerLastReceive;
++
++  /// No description provided for @peerNoPaths.
++  ///
++  /// In en, this message translates to:
++  /// **'No paths available'**
++  String get peerNoPaths;
++
++  /// No description provided for @peerTimeNever.
++  ///
++  /// In en, this message translates to:
++  /// **'never'**
++  String get peerTimeNever;
++
++  /// No description provided for @peerTimeJustNow.
++  ///
++  /// In en, this message translates to:
++  /// **'just now'**
++  String get peerTimeJustNow;
++
++  /// No description provided for @peerTimeSecondsAgo.
++  ///
++  /// In en, this message translates to:
++  /// **'{seconds}s ago'**
++  String peerTimeSecondsAgo(int seconds);
++
++  /// No description provided for @peerTimeMinutesAgo.
++  ///
++  /// In en, this message translates to:
++  /// **'{minutes}m ago'**
++  String peerTimeMinutesAgo(int minutes);
++
++  /// No description provided for @peerTimeHoursAgo.
++  ///
++  /// In en, this message translates to:
++  /// **'{hours}h ago'**
++  String peerTimeHoursAgo(int hours);
++
++  /// No description provided for @peerTimeDaysAgo.
++  ///
++  /// In en, this message translates to:
++  /// **'{days}d ago'**
++  String peerTimeDaysAgo(int days);
+ }
+ 
+-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
++class _AppLocalizationsDelegate
++    extends LocalizationsDelegate<AppLocalizations> {
+   const _AppLocalizationsDelegate();
+ 
+   @override
+@@ -405,25 +505,25 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations>
+   }
+ 
+   @override
+-  bool isSupported(Locale locale) => <String>['en', 'zh'].contains(locale.languageCode);
++  bool isSupported(Locale locale) =>
++      <String>['en', 'zh'].contains(locale.languageCode);
+ 
+   @override
+   bool shouldReload(_AppLocalizationsDelegate old) => false;
+ }
+ 
+ AppLocalizations lookupAppLocalizations(Locale locale) {
+-
+-
+   // Lookup logic when only language code is specified.
+   switch (locale.languageCode) {
+-    case 'en': return AppLocalizationsEn();
+-    case 'zh': return AppLocalizationsZh();
++    case 'en':
++      return AppLocalizationsEn();
++    case 'zh':
++      return AppLocalizationsZh();
+   }
+ 
+   throw FlutterError(
+-    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+-    'an issue with the localizations generation tool. Please file an issue '
+-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+-    'that was used.'
+-  );
++      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
++      'an issue with the localizations generation tool. Please file an issue '
++      'on GitHub with a reproducible sample app and the gen-l10n configuration '
++      'that was used.');
+ }
+diff --git a/app/lib/l10n/app_localizations_en.dart b/app/lib/l10n/app_localizations_en.dart
+index d6d0cf3..5900a8c 100644
+--- a/app/lib/l10n/app_localizations_en.dart
++++ b/app/lib/l10n/app_localizations_en.dart
+@@ -166,11 +166,70 @@ class AppLocalizationsEn extends AppLocalizations {
+   String get serviceNotRunning => 'ZeroTier service is not running';
+ 
+   @override
+-  String get moduleNotRunning => 'ZeroTier Magisk module is not running. Please check if you have installed the ZeroTier Magisk module.';
++  String get moduleNotRunning =>
++      'ZeroTier Magisk module is not running. Please check if you have installed the ZeroTier Magisk module.';
+ 
+   @override
+   String get peerTunneled => 'Relayed';
+ 
+   @override
+   String get peerDirect => 'Direct';
++
++  @override
++  String get peerBonded => 'Bonded';
++
++  @override
++  String get peerLatencyUnknown => 'Latency unknown';
++
++  @override
++  String peerPathsChip(int count, int active) {
++    return '$count paths ($active active)';
++  }
++
++  @override
++  String get peerPathPreferred => 'Preferred';
++
++  @override
++  String get peerPathExpired => 'Expired';
++
++  @override
++  String get peerLocalPort => 'Local port';
++
++  @override
++  String get peerTrustedPathId => 'Trusted path ID';
++
++  @override
++  String get peerLastSend => 'Last send';
++
++  @override
++  String get peerLastReceive => 'Last receive';
++
++  @override
++  String get peerNoPaths => 'No paths available';
++
++  @override
++  String get peerTimeNever => 'never';
++
++  @override
++  String get peerTimeJustNow => 'just now';
++
++  @override
++  String peerTimeSecondsAgo(int seconds) {
++    return '${seconds}s ago';
++  }
++
++  @override
++  String peerTimeMinutesAgo(int minutes) {
++    return '${minutes}m ago';
++  }
++
++  @override
++  String peerTimeHoursAgo(int hours) {
++    return '${hours}h ago';
++  }
++
++  @override
++  String peerTimeDaysAgo(int days) {
++    return '${days}d ago';
++  }
+ }
+diff --git a/app/lib/l10n/app_localizations_zh.dart b/app/lib/l10n/app_localizations_zh.dart
+index 09cc147..e1fdbe2 100644
+--- a/app/lib/l10n/app_localizations_zh.dart
++++ b/app/lib/l10n/app_localizations_zh.dart
+@@ -166,11 +166,70 @@ class AppLocalizationsZh extends AppLocalizations {
+   String get serviceNotRunning => 'ZeroTier服务未运行';
+ 
+   @override
+-  String get moduleNotRunning => 'ZeroTier Magisk模块未运行，请检查您是否安装Zerotier Magisk模块。';
++  String get moduleNotRunning =>
++      'ZeroTier Magisk模块未运行，请检查您是否安装Zerotier Magisk模块。';
+ 
+   @override
+   String get peerTunneled => '中继';
+ 
+   @override
+   String get peerDirect => '直连';
++
++  @override
++  String get peerBonded => 'Bonded';
++
++  @override
++  String get peerLatencyUnknown => '延迟未知';
++
++  @override
++  String peerPathsChip(int count, int active) {
++    return '路径 $count(活跃 $active)';
++  }
++
++  @override
++  String get peerPathPreferred => '首选';
++
++  @override
++  String get peerPathExpired => '已过期';
++
++  @override
++  String get peerLocalPort => '本地端口';
++
++  @override
++  String get peerTrustedPathId => '受信路径 ID';
++
++  @override
++  String get peerLastSend => '最近发送';
++
++  @override
++  String get peerLastReceive => '最近接收';
++
++  @override
++  String get peerNoPaths => '无可用路径';
++
++  @override
++  String get peerTimeNever => '从未';
++
++  @override
++  String get peerTimeJustNow => '刚刚';
++
++  @override
++  String peerTimeSecondsAgo(int seconds) {
++    return '$seconds 秒前';
++  }
++
++  @override
++  String peerTimeMinutesAgo(int minutes) {
++    return '$minutes 分钟前';
++  }
++
++  @override
++  String peerTimeHoursAgo(int hours) {
++    return '$hours 小时前';
++  }
++
++  @override
++  String peerTimeDaysAgo(int days) {
++    return '$days 天前';
++  }
+ }
+diff --git a/app/lib/l10n/app_zh.arb b/app/lib/l10n/app_zh.arb
+index 0063d30..8482b6f 100644
+--- a/app/lib/l10n/app_zh.arb
++++ b/app/lib/l10n/app_zh.arb
+@@ -121,5 +121,22 @@
+   "moduleNotRunning": "ZeroTier Magisk模块未运行，请检查您是否安装Zerotier Magisk模块。",
+ 
+   "peerTunneled": "中继",
+-  "peerDirect": "直连"
++  "peerDirect": "直连",
++
++  "peerBonded": "Bonded",
++  "peerLatencyUnknown": "延迟未知",
++  "peerPathsChip": "路径 {count}(活跃 {active})",
++  "peerPathPreferred": "首选",
++  "peerPathExpired": "已过期",
++  "peerLocalPort": "本地端口",
++  "peerTrustedPathId": "受信路径 ID",
++  "peerLastSend": "最近发送",
++  "peerLastReceive": "最近接收",
++  "peerNoPaths": "无可用路径",
++  "peerTimeNever": "从未",
++  "peerTimeJustNow": "刚刚",
++  "peerTimeSecondsAgo": "{seconds} 秒前",
++  "peerTimeMinutesAgo": "{minutes} 分钟前",
++  "peerTimeHoursAgo": "{hours} 小时前",
++  "peerTimeDaysAgo": "{days} 天前"
+ } 
+\ No newline at end of file
+diff --git a/app/lib/models/peer_info.dart b/app/lib/models/peer_info.dart
+index 3c72e41..20b8cd3 100644
+--- a/app/lib/models/peer_info.dart
++++ b/app/lib/models/peer_info.dart
+@@ -1,13 +1,84 @@
+-import 'dart:math'; // For min function
++// ZeroTier peer 数据模型
++//
++// 数据来源：本地 HTTP API `GET http://localhost:9993/peer`
++// 字段定义见 ZeroTierOne/service/OneService.cpp 的 `_peerToJson()`
++
++/// 单条网络路径（本机与某个 peer 之间的一个可用地址）
++class PeerPath {
++  /// 远端地址（IP:端口）
++  final String address;
++
++  /// 最近一次发包（Unix 毫秒时间戳，0 = 从未）
++  final int lastSend;
++
++  /// 最近一次收包（Unix 毫秒时间戳，0 = 从未）
++  final int lastReceive;
++
++  /// 路径是否仍然有效（未过期）
++  final bool active;
++
++  /// 路径是否已过期
++  final bool expired;
++
++  /// 是否为当前首选路径
++  final bool preferred;
++
++  /// 本机侧源端口
++  final int localPort;
++
++  /// 受信路径 ID（0 = 未设置）
++  final int trustedPathId;
++
++  PeerPath({
++    required this.address,
++    required this.lastSend,
++    required this.lastReceive,
++    required this.active,
++    required this.expired,
++    required this.preferred,
++    required this.localPort,
++    required this.trustedPathId,
++  });
++
++  factory PeerPath.fromJson(Map<String, dynamic> json) {
++    return PeerPath(
++      address: json['address'] as String? ?? '?',
++      lastSend: _asInt(json['lastSend']),
++      lastReceive: _asInt(json['lastReceive']),
++      active: json['active'] as bool? ?? false,
++      expired: json['expired'] as bool? ?? false,
++      preferred: json['preferred'] as bool? ?? false,
++      localPort: _asInt(json['localPort']),
++      trustedPathId: _asInt(json['trustedPathId']),
++    );
++  }
++}
++
++int _asInt(dynamic value) {
++  if (value is int) return value;
++  if (value is num) return value.toInt();
++  return 0;
++}
+ 
+ class PeerInfo implements Comparable<PeerInfo> {
+   final String address;
+-  final int latency;
++
++  /// 延迟（毫秒）；null 表示未知（上游返回 -1 或字段缺失）
++  final int? latency;
+   final String? version;
+   final String role;
+   final String? preferredPath;
+   final bool isPlanet;
+-  final bool tunneled; // 是否通过中继
++  final bool isMoon;
++
++  /// 是否通过中继（true = 中继，false = 直连）
++  final bool tunneled;
++
++  /// 是否启用多链路绑定（bonding）
++  final bool isBonded;
++
++  /// 全部路径
++  final List<PeerPath> paths;
+ 
+   PeerInfo({
+     required this.address,
+@@ -16,67 +87,77 @@ class PeerInfo implements Comparable<PeerInfo> {
+     required this.role,
+     this.preferredPath,
+     required this.tunneled,
+-  }) : isPlanet = (role == 'PLANET');
++    required this.isBonded,
++    required this.paths,
++  })  : isPlanet = (role == 'PLANET'),
++        isMoon = (role == 'MOON');
++
++  /// 路径总数
++  int get pathCount => paths.length;
++
++  /// 仍然有效的路径数
++  int get activePathCount => paths.where((p) => p.active && !p.expired).length;
+ 
+   factory PeerInfo.fromJson(Map<String, dynamic> json) {
++    final rawPaths = json['paths'] as List<dynamic>? ?? const [];
++    final paths = rawPaths
++        .whereType<Map<String, dynamic>>()
++        .map(PeerPath.fromJson)
++        .toList();
++
++    // 优先选首选且有效的路径，否则取第一条有效路径
+     String? bestPath;
+-    List<dynamic> paths = json['paths'] as List<dynamic>? ?? [];
+-
+-    // Find the preferred active path
+-    var preferred = paths.firstWhere(
+-        (p) =>
+-            p is Map<String, dynamic> &&
+-            p['active'] == true &&
+-            p['expired'] == false &&
+-            p['preferred'] == true,
+-        orElse: () => null);
+-
+-    if (preferred != null) {
+-      bestPath = preferred['address'] as String?;
+-    } else {
+-      // If no preferred, find the first active path
+-      var firstActive = paths.firstWhere(
+-          (p) =>
+-              p is Map<String, dynamic> &&
+-              p['active'] == true &&
+-              p['expired'] == false,
+-          orElse: () => null);
+-      if (firstActive != null) {
+-        bestPath = firstActive['address'] as String?;
++    for (final p in paths) {
++      if (p.preferred && p.active && !p.expired) {
++        bestPath = p.address;
++        break;
++      }
++    }
++    if (bestPath == null) {
++      for (final p in paths) {
++        if (p.active && !p.expired) {
++          bestPath = p.address;
++          break;
++        }
+       }
+     }
+ 
++    final rawLatency = json['latency'];
++    final latency =
++        (rawLatency is num && rawLatency >= 0) ? rawLatency.toInt() : null;
++
+     return PeerInfo(
+       address: json['address'] as String? ?? 'Unknown',
+-      latency: json['latency'] as int,
++      latency: latency,
+       version: json['version'] as String?,
+       role: json['role'] as String? ?? 'UNKNOWN',
+       preferredPath: bestPath,
+-      tunneled: json['tunneled'] as bool,
++      tunneled: json['tunneled'] as bool? ?? false,
++      isBonded: json['isBonded'] as bool? ?? false,
++      paths: paths,
+     );
+   }
+ 
+-  // Comparison logic for sorting: PLANETs first, then by tunneled (直连优先), then by latency
++  /// 排序：PLANET 优先 → 直连优先 → 延迟升序（未知排最后）→ 地址
+   @override
+   int compareTo(PeerInfo other) {
+     if (isPlanet != other.isPlanet) {
+-      return isPlanet ? 1 : -1;
++      return isPlanet ? -1 : 1;
+     }
+-    
++
+     if (tunneled != other.tunneled) {
+-      return tunneled ? -1 : 1; 
++      return tunneled ? 1 : -1;
+     }
+-    
+-    // 最后按延迟排序（如果有的话）
++
+     if (latency != null && other.latency != null) {
+-      return latency!.compareTo(other.latency!);
++      final cmp = latency!.compareTo(other.latency!);
++      if (cmp != 0) return cmp;
+     } else if (latency != null) {
+-      return -1; // 有延迟信息的优先
++      return -1;
+     } else if (other.latency != null) {
+       return 1;
+     }
+-    
+-    // 如果都没有延迟信息，按地址排序
++
+     return address.compareTo(other.address);
+   }
+-} 
+\ No newline at end of file
++}

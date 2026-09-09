@@ -166,11 +166,70 @@ class AppLocalizationsEn extends AppLocalizations {
   String get serviceNotRunning => 'ZeroTier service is not running';
 
   @override
-  String get moduleNotRunning => 'ZeroTier Magisk module is not running. Please check if you have installed the ZeroTier Magisk module.';
+  String get moduleNotRunning =>
+      'ZeroTier Magisk module is not running. Please check if you have installed the ZeroTier Magisk module.';
 
   @override
   String get peerTunneled => 'Relayed';
 
   @override
   String get peerDirect => 'Direct';
+
+  @override
+  String get peerBonded => 'Bonded';
+
+  @override
+  String get peerLatencyUnknown => 'Latency unknown';
+
+  @override
+  String peerPathsChip(int count, int active) {
+    return '$count paths ($active active)';
+  }
+
+  @override
+  String get peerPathPreferred => 'Preferred';
+
+  @override
+  String get peerPathExpired => 'Expired';
+
+  @override
+  String get peerLocalPort => 'Local port';
+
+  @override
+  String get peerTrustedPathId => 'Trusted path ID';
+
+  @override
+  String get peerLastSend => 'Last send';
+
+  @override
+  String get peerLastReceive => 'Last receive';
+
+  @override
+  String get peerNoPaths => 'No paths available';
+
+  @override
+  String get peerTimeNever => 'never';
+
+  @override
+  String get peerTimeJustNow => 'just now';
+
+  @override
+  String peerTimeSecondsAgo(int seconds) {
+    return '${seconds}s ago';
+  }
+
+  @override
+  String peerTimeMinutesAgo(int minutes) {
+    return '${minutes}m ago';
+  }
+
+  @override
+  String peerTimeHoursAgo(int hours) {
+    return '${hours}h ago';
+  }
+
+  @override
+  String peerTimeDaysAgo(int days) {
+    return '${days}d ago';
+  }
 }

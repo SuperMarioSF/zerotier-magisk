@@ -1,0 +1,10 @@
+# Flutter / Dart build artifacts
+app/build/
+app/.dart_tool/
+app/android/build/reports/
+
+# Lockfile: upstream deliberately removed it to avoid pinning a mirror
+app/pubspec.lock
+
+# Local APK output (large binaries stay out of git; rebuild with build-apk.sh)
+build/*.apk

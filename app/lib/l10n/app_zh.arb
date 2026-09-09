@@ -121,5 +121,22 @@
   "moduleNotRunning": "ZeroTier Magisk模块未运行，请检查您是否安装Zerotier Magisk模块。",
 
   "peerTunneled": "中继",
-  "peerDirect": "直连"
+  "peerDirect": "直连",
+
+  "peerBonded": "Bonded",
+  "peerLatencyUnknown": "延迟未知",
+  "peerPathsChip": "路径 {count}(活跃 {active})",
+  "peerPathPreferred": "首选",
+  "peerPathExpired": "已过期",
+  "peerLocalPort": "本地端口",
+  "peerTrustedPathId": "受信路径 ID",
+  "peerLastSend": "最近发送",
+  "peerLastReceive": "最近接收",
+  "peerNoPaths": "无可用路径",
+  "peerTimeNever": "从未",
+  "peerTimeJustNow": "刚刚",
+  "peerTimeSecondsAgo": "{seconds} 秒前",
+  "peerTimeMinutesAgo": "{minutes} 分钟前",
+  "peerTimeHoursAgo": "{hours} 小时前",
+  "peerTimeDaysAgo": "{days} 天前"
 } 

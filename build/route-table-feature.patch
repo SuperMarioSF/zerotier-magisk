@@ -1,0 +1,294 @@
+diff --git a/osdep/LinuxNetLink.cpp b/osdep/LinuxNetLink.cpp
+index 00b79b1..6789dc3 100644
+--- a/osdep/LinuxNetLink.cpp
++++ b/osdep/LinuxNetLink.cpp
+@@ -22,6 +22,8 @@
+ #include "LinuxNetLink.hpp"
+ 
+ #include <unistd.h>
++#include <ifaddrs.h>
++#include <net/if.h>
+ #include <linux/if_tun.h>
+ 
+ #ifndef IFNAMSIZ
+@@ -58,6 +60,9 @@ LinuxNetLink::LinuxNetLink()
+ 	, _fd(socket(AF_NETLINK, SOCK_RAW, NETLINK_ROUTE))
+ 	, _la({0})
+ {
++	// Default routing table for ZeroTier's own routes (see setRouteTable())
++	_routeTable = RT_TABLE_MAIN;
++
+ 	// set socket timeout to 1 sec so we're not permablocking recv() calls
+ 	_setSocketTimeout(_fd, 1);
+ 
+@@ -121,16 +126,16 @@ int LinuxNetLink::_doRecv(int fd)
+ 		if (rtn > 0) {
+ 			nlp = (struct nlmsghdr *)p;
+ 
+-			if(nlp->nlmsg_type == NLMSG_ERROR && (nlp->nlmsg_flags & NLM_F_ACK) != NLM_F_ACK) {
++			if(nlp->nlmsg_type == NLMSG_ERROR) {
+ 				struct nlmsgerr *err = (struct nlmsgerr*)NLMSG_DATA(nlp);
+ 				if (err->error != 0) {
+-#ifdef ZT_NETLINK_TRACE
+ 					fprintf(stderr, "rtnetlink error: %s\n", strerror(-(err->error)));
+-#endif
+ 				}
+-				p = buf;
+-				nll = 0;
+-				break;
++				if ((nlp->nlmsg_flags & NLM_F_ACK) != NLM_F_ACK) {
++					p = buf;
++					nll = 0;
++					break;
++				}
+ 			}
+ 
+ 			if (nlp->nlmsg_type == NLMSG_NOOP) {
+@@ -498,6 +503,17 @@ void LinuxNetLink::_linkAdded(struct nlmsghdr *nlp)
+ 		memcpy(entry.mac_bin, mac_bin, 6);
+ 		entry.mtu = mtu;
+ 	}
++
++	// When ZeroTier's routes live in a dedicated table, mirror this interface's
++	// connected route(s) once it is up -- but ONLY for ZeroTier interfaces.
++	// Mirroring physical interfaces (wlan0/ccmni0/tun0) would put their routes
++	// into our table, and since our table is looked up first, it would hijack
++	// traffic meant for physical networks (e.g. a WiFi DNS server outside the
++	// interface's own subnet), making Android report "no internet".
++	if (_routeTable != RT_TABLE_MAIN && ifname[0] && (ifip->ifi_flags & IFF_UP) &&
++		(strncmp(ifname, "zt", 2) == 0)) {
++		_mirrorConnectedRoutes(ifname);
++	}
+ }
+ 
+ void LinuxNetLink::_linkDeleted(struct nlmsghdr *nlp)
+@@ -692,6 +708,16 @@ void LinuxNetLink::addRoute(const InetAddress &target, const InetAddress &via, c
+ {
+ 	if (!target) return;
+ 
++	// When ZeroTier's routes live in a dedicated table (local.conf settings.routeTable)
++	// the kernel validates the next hop against that same table only. The interface's
++	// connected route is installed by the kernel into the main table, so add a host
++	// route for the gateway in our own table first -- otherwise the via route below
++	// fails with "Network is unreachable". (Recursion terminates: via is empty here.)
++	if (_routeTable != RT_TABLE_MAIN && via) {
++		const InetAddress gw(via.rawIpData(), via.isV4() ? 4U : 16U, via.isV4() ? 32U : 128U);
++		addRoute(gw, InetAddress(), InetAddress(), ifaceName);
++	}
++
+ 	int fd = socket(AF_NETLINK, SOCK_RAW, NETLINK_ROUTE);
+ 	if (fd == -1) {
+ 		fprintf(stderr, "Error opening RTNETLINK socket: %s\n", strerror(errno));
+@@ -792,9 +818,9 @@ void LinuxNetLink::addRoute(const InetAddress &target, const InetAddress &via, c
+ 	req.nl.nlmsg_pid = 0;
+ 	req.nl.nlmsg_seq = ++_seq;
+ 	req.rt.rtm_family = target.ss_family;
+-	req.rt.rtm_table = RT_TABLE_MAIN;
++	req.rt.rtm_table = (unsigned char)_routeTable;
+ 	req.rt.rtm_protocol = RTPROT_STATIC;
+-	req.rt.rtm_scope = RT_SCOPE_UNIVERSE;
++	req.rt.rtm_scope = (via || _routeTable == RT_TABLE_MAIN) ? RT_SCOPE_UNIVERSE : RT_SCOPE_LINK;
+ 	req.rt.rtm_type = RTN_UNICAST;
+ 	req.rt.rtm_dst_len = target.netmaskBits();
+ 	req.rt.rtm_flags = 0;
+@@ -907,9 +933,9 @@ void LinuxNetLink::delRoute(const InetAddress &target, const InetAddress &via, c
+ 	req.nl.nlmsg_pid = 0;
+ 	req.nl.nlmsg_seq = ++_seq;
+ 	req.rt.rtm_family = target.ss_family;
+-	req.rt.rtm_table = RT_TABLE_MAIN;
++	req.rt.rtm_table = (unsigned char)_routeTable;
+ 	req.rt.rtm_protocol = RTPROT_STATIC;
+-	req.rt.rtm_scope = RT_SCOPE_UNIVERSE;
++	req.rt.rtm_scope = (via || _routeTable == RT_TABLE_MAIN) ? RT_SCOPE_UNIVERSE : RT_SCOPE_LINK;
+ 	req.rt.rtm_type = RTN_UNICAST;
+ 	req.rt.rtm_dst_len = target.netmaskBits();
+ 	req.rt.rtm_flags = 0;
+@@ -1052,6 +1078,24 @@ void LinuxNetLink::addAddress(const InetAddress &addr, const char *iface)
+ 	_doRecv(fd);
+ 
+ 	close(fd);
++
++	// With a dedicated routing table (_routeTable != main) the kernel still installs
++	// the interface's connected route into the main table only. Once traffic is
++	// directed to our table, hosts on the same ZeroTier subnet would be unreachable,
++	// so mirror the connected route into the dedicated table as well.
++	if (_routeTable != RT_TABLE_MAIN) {
++		// The interface may still be DOWN when its address is assigned, and the
++		// kernel refuses routes on a down interface. Retry until the connected
++		// route actually lands in our table.
++		const InetAddress connected(addr.network());
++		for (int i = 0; i < 50; ++i) {
++			if (routeIsSet(connected, InetAddress(), InetAddress(), iface)) {
++				break;
++			}
++			addRoute(connected, InetAddress(), InetAddress(), iface);
++			Thread::sleep(100);
++		}
++	}
+ }
+ 
+ void LinuxNetLink::removeAddress(const InetAddress &addr, const char *iface)
+@@ -1185,6 +1229,66 @@ bool LinuxNetLink::routeIsSet(const InetAddress &target, const InetAddress &via,
+ 	return false;
+ }
+ 
++void LinuxNetLink::_mirrorConnectedRoutes(const char *iface)
++{
++	if (_routeTable == RT_TABLE_MAIN || !iface || !iface[0]) {
++		return;
++	}
++
++	struct ifaddrs *list = (struct ifaddrs *)0;
++	if (getifaddrs(&list) != 0) {
++		return;
++	}
++
++	for (struct ifaddrs *i = list; i; i = i->ifa_next) {
++		if ((!i->ifa_addr) || (!i->ifa_netmask) || (!i->ifa_name)) {
++			continue;
++		}
++		if (strcmp(i->ifa_name, iface) != 0) {
++			continue;
++		}
++
++		const int fam = i->ifa_addr->sa_family;
++		unsigned int bits = 0;
++		InetAddress addr;
++		if (fam == AF_INET) {
++			uint32_t m = ntohl(((const struct sockaddr_in *)i->ifa_netmask)->sin_addr.s_addr);
++			while (m & 0x80000000U) {
++				++bits;
++				m <<= 1;
++			}
++			addr.set(&((const struct sockaddr_in *)i->ifa_addr)->sin_addr, 4, bits);
++		} else if (fam == AF_INET6) {
++			const unsigned char *m = ((const struct sockaddr_in6 *)i->ifa_netmask)->sin6_addr.s6_addr;
++			bool done = false;
++			for (int b = 0; (b < 16) && (!done); ++b) {
++				for (int j = 7; j >= 0; --j) {
++					if (m[b] & (1 << j)) {
++						++bits;
++					} else {
++						done = true;
++						break;
++					}
++				}
++			}
++			addr.set(&((const struct sockaddr_in6 *)i->ifa_addr)->sin6_addr, 16, bits);
++		} else {
++			continue;
++		}
++
++		if (!addr) {
++			continue;
++		}
++
++		const InetAddress connected(addr.network());
++		if (!routeIsSet(connected, InetAddress(), InetAddress(), iface)) {
++			addRoute(connected, InetAddress(), InetAddress(), iface);
++		}
++	}
++
++	freeifaddrs(list);
++}
++
+ int LinuxNetLink::_indexForInterface(const char *iface)
+ {
+ 	Mutex::Lock l(_if_m);
+diff --git a/osdep/LinuxNetLink.hpp b/osdep/LinuxNetLink.hpp
+index f7d8ba2..b0c7a08 100644
+--- a/osdep/LinuxNetLink.hpp
++++ b/osdep/LinuxNetLink.hpp
+@@ -91,6 +91,31 @@ public:
+ 	LinuxNetLink(LinuxNetLink const&) = delete;
+ 	void operator=(LinuxNetLink const&) = delete;
+ 
++	/**
++	 * Set the routing table used for ZeroTier's own routes (default RT_TABLE_MAIN).
++	 *
++	 * On Linux/Android the main table also carries the routes of every physical
++	 * interface. A blanket `ip rule from all lookup main` therefore promotes all
++	 * of them, which can hijack unrelated traffic (e.g. a WiFi DNS server that
++	 * lives outside the interface's own subnet, making Android report "no
++	 * internet"). Pointing ZeroTier at a dedicated table (e.g. 200) allows
++	 * `ip rule add lookup 200 pref 1`, which only ever matches ZeroTier routes.
++	 *
++	 * rtm_table is an 8-bit field, so only 1..254 is accepted. Must be called
++	 * before routes are added.
++	 */
++	void setRouteTable(int t)
++	{
++		if (t > 0 && t < 255) {
++			_routeTable = t;
++		}
++	}
++
++	int routeTable() const
++	{
++		return _routeTable;
++	}
++
+ 	void addRoute(const InetAddress &target, const InetAddress &via, const InetAddress &src, const char *ifaceName);
+ 	void delRoute(const InetAddress &target, const InetAddress &via, const InetAddress &src, const char *ifaceName);
+ 
+@@ -116,7 +141,11 @@ private:
+ 	void _requestIPv4Routes();
+ 	void _requestIPv6Routes();
+ 
+-	int _indexForInterface(const char *iface);
++	int _indexForInterface(const char* iface);
++
++	// Mirror the connected routes of an interface into _routeTable (no-op when
++	// using the main table). Used from _linkAdded() once an interface is up.
++	void _mirrorConnectedRoutes(const char* iface);
+ 
+ 	void _setSocketTimeout(int fd, int seconds = 1);
+ 
+@@ -125,6 +154,10 @@ private:
+ 
+ 	uint32_t _seq;
+ 
++	// Routing table used for ZeroTier's own routes. Defaults to RT_TABLE_MAIN;
++	// configurable through local.conf settings.routeTable (see setRouteTable).
++	int _routeTable;
++
+ 	std::map< InetAddress,std::set<LinuxNetLink::Route> > _routes;
+ 	Mutex _routes_m;
+ 
+diff --git a/service/OneService.cpp b/service/OneService.cpp
+index 594ff02..80a5a10 100644
+--- a/service/OneService.cpp
++++ b/service/OneService.cpp
+@@ -52,6 +52,10 @@
+ #include "../osdep/OSUtils.hpp"
+ #include "../osdep/Http.hpp"
+ #include "../osdep/PortMapper.hpp"
++
++#ifdef __LINUX__
++#include "../osdep/LinuxNetLink.hpp"
++#endif
+ #include "../osdep/Binder.hpp"
+ #include "../osdep/ManagedRoute.hpp"
+ #include "../osdep/BlockingQueue.hpp"
+@@ -2592,6 +2596,21 @@ public:
+ 		_fallbackRelayAddress = InetAddress(OSUtils::jsonString(settings["tcpFallbackRelay"], ZT_TCP_FALLBACK_RELAY).c_str());
+ #endif
+ 		_primaryPort = (unsigned int)OSUtils::jsonInt(settings["primaryPort"],(uint64_t)_primaryPort) & 0xffff;
++
++#ifdef __LINUX__
++		// Optional: put ZeroTier's own routes into a dedicated routing table
++		// (local.conf settings.routeTable, default = main/254). With a dedicated
++		// table the host can do `ip rule add lookup <table> pref 1`, which only
++		// ever matches ZeroTier routes -- so promoting the main table (and with
++		// it the routes of physical interfaces, e.g. a WiFi DNS server outside
++		// the interface's own subnet) is no longer necessary.
++		{
++			const int routeTable = (int)(OSUtils::jsonInt(settings["routeTable"], (uint64_t)RT_TABLE_MAIN) & 0xff);
++			if (routeTable != RT_TABLE_MAIN) {
++				LinuxNetLink::getInstance().setRouteTable(routeTable);
++			}
++		}
++#endif
+ 		_allowSecondaryPort = OSUtils::jsonBool(settings["allowSecondaryPort"],true);
+ 		_secondaryPort = (unsigned int)OSUtils::jsonInt(settings["secondaryPort"],0);
+ 		_tertiaryPort = (unsigned int)OSUtils::jsonInt(settings["tertiaryPort"],0);

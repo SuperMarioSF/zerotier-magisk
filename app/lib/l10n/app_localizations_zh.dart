@@ -166,11 +166,70 @@ class AppLocalizationsZh extends AppLocalizations {
   String get serviceNotRunning => 'ZeroTier服务未运行';
 
   @override
-  String get moduleNotRunning => 'ZeroTier Magisk模块未运行，请检查您是否安装Zerotier Magisk模块。';
+  String get moduleNotRunning =>
+      'ZeroTier Magisk模块未运行，请检查您是否安装Zerotier Magisk模块。';
 
   @override
   String get peerTunneled => '中继';
 
   @override
   String get peerDirect => '直连';
+
+  @override
+  String get peerBonded => 'Bonded';
+
+  @override
+  String get peerLatencyUnknown => '延迟未知';
+
+  @override
+  String peerPathsChip(int count, int active) {
+    return '路径 $count(活跃 $active)';
+  }
+
+  @override
+  String get peerPathPreferred => '首选';
+
+  @override
+  String get peerPathExpired => '已过期';
+
+  @override
+  String get peerLocalPort => '本地端口';
+
+  @override
+  String get peerTrustedPathId => '受信路径 ID';
+
+  @override
+  String get peerLastSend => '最近发送';
+
+  @override
+  String get peerLastReceive => '最近接收';
+
+  @override
+  String get peerNoPaths => '无可用路径';
+
+  @override
+  String get peerTimeNever => '从未';
+
+  @override
+  String get peerTimeJustNow => '刚刚';
+
+  @override
+  String peerTimeSecondsAgo(int seconds) {
+    return '$seconds 秒前';
+  }
+
+  @override
+  String peerTimeMinutesAgo(int minutes) {
+    return '$minutes 分钟前';
+  }
+
+  @override
+  String peerTimeHoursAgo(int hours) {
+    return '$hours 小时前';
+  }
+
+  @override
+  String peerTimeDaysAgo(int days) {
+    return '$days 天前';
+  }
 }
